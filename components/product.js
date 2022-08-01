@@ -10,7 +10,7 @@ const  Product = ({product: {image, name,slug, price, id}}) => {
               <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
                 <img
                   src={ urlFor(image && image[0])}
-                  className="w-full  h-full object-center object-cover lg:w-full lg:h-full"
+                  className="w-full  h-full object-center object-cover  lg:w-full lg:h-full"
                 />
               </div>
               <div className="mt-4 flex justify-between">
@@ -18,12 +18,12 @@ const  Product = ({product: {image, name,slug, price, id}}) => {
                   <h3 className="text-sm text-gray-700">
                     <div>
                       <span aria-hidden="true" className="absolute inset-0" />
-                      { name}
+                      { name }
                     </div>
                   </h3>
                   
                 </div>
-                <p className="text-sm font-medium text-gray-900">{ price}</p>
+                <p className="text-sm font-medium text-gray-900">{`\$${price}`}</p>
               </div>
             </div>
           </Link>
