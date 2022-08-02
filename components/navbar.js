@@ -20,16 +20,16 @@ const navigation = {
           name: 'IT & Electronics',
           items: [
             { name: 'Browe All',    href: '/' },
-            { name: "Software",     href: "/"},
-            { name: "Strorage/USB", href: "/"},
-            { name: "Laptops",      href: "/"},
-            { name: "Monitors",     href: "/"},
-            { name: "Printers/Ink", href: "/"},
-            { name: "Speakers",     href: "/"},
-            { name: "Phones",       href: "/"},
-            { name: "Cables",       href: "/"},
-            { name: "Headphones",   href: "/"},
-            { name: "Other",        href: "/"},
+            { name: "Software",     href: "/category/software"},
+            { name: "Strorage/USB", href: "/category/storage"},
+            { name: "Laptops",      href: "/category/laptop"},
+            { name: "Monitors",     href: "/category/monitor"},
+            { name: "Printers/Ink", href: "/category/printerink"},
+            { name: "Speakers",     href: "/category/spaker"},
+            { name: "Phones",       href: "/category/phone"},
+            { name: "Cables",       href: "/category/cable"},
+            { name: "Headphones",   href: "/category/headphone"},
+            { name: "Other",        href: "/category/other"},
 
           ],
         }
@@ -38,8 +38,7 @@ const navigation = {
     }
   ],
   pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+    { name: 'Contact & Info', href: '#' },
   ],
 }
 
@@ -160,31 +159,6 @@ const NavBar = () => {
                     </div>
                   ))}
                 </div>
-
-                <div className="border-t border-gray-200 py-6 px-4 space-y-6">
-                  <div className="flow-root">
-                    <a href="#" className="-m-2 p-2 block font-medium text-gray-900">
-                      Sign in
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <a href="#" className="-m-2 p-2 block font-medium text-gray-900">
-                      Create account
-                    </a>
-                  </div>
-                </div>
-
-                <div className="border-t border-gray-200 py-6 px-4">
-                  <a href="#" className="-m-2 p-2 flex items-center">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="w-5 h-auto block flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -193,7 +167,7 @@ const NavBar = () => {
 
       <header className="relative bg-white">
         <p className="bg-gray-900 h-10 flex items-center justify-center text-sm font-medium text-white px-4 sm:px-6 lg:px-8">
-          USD rate something something somthing
+          USD depends on the black market exchange rate
         </p>
 
         <nav aria-label="Top" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -45,16 +45,16 @@
             frozen: true,
             //Preset of tags (defaults to empty)
             preload: [
-                {label: "Software", value: "software"},
+                {label: "Software", value:     "software"},
                 {label: "Strorage/USB", value: "storage"},
-                {label: "Laptops", value: "laptop"},
-                {label: "Monitors", value: "monitor"},
+                {label: "Laptops", value:      "laptop"},
+                {label: "Monitors", value:     "monitor"},
                 {label: "Printers/Ink", value: "printerink"},
-                {label: "Speakers", value: "speaker"},
-                {label: "Phones", value: "phone"},
-                {label: "Cables", value: "cable"},
-                {label: "Headphones", value: "headphone"},
-                {label: "Other", value: "other"},
+                {label: "Speakers", value:     "speaker"},
+                {label: "Phones", value:       "phone"},
+                {label: "Cables", value:       "cable"},
+                {label: "Headphones", value:   "headphone"},
+                {label: "Other", value:        "other"},
             ],
 
             //Closes menu after tag selected (defaults to true)
