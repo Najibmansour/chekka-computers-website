@@ -1,55 +1,54 @@
-import React from 'react'
+import React from "react";
 
-import {client, urlFor} from '../lib/client';
+import { client, urlFor } from "../lib/client";
 
-import { AiOutlineShopping } from 'react-icons/ai'
-import Product from './product';
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
+import { AiOutlineShopping } from "react-icons/ai";
+import Product from "./product";
+import { Fragment, useState } from "react";
+import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
+import {
+  MenuIcon,
+  SearchIcon,
+  ShoppingBagIcon,
+  XIcon,
+} from "@heroicons/react/outline";
 
 const navigation = {
   categories: [
     {
-      id: 'IT & Electronics',
-      name: 'IT & Electronics',
+      id: "IT & Electronics",
+      name: "IT & Electronics",
       featured: [],
       sections: [
         {
-          id: 'IT & Electronics',
-          name: 'IT & Electronics',
+          id: "IT & Electronics",
+          name: "IT & Electronics",
           items: [
-            { name: 'Browe All',    href: '/' },
-            { name: "Software",     href: "/category/software"},
-            { name: "Strorage/USB", href: "/category/storage"},
-            { name: "Laptops",      href: "/category/laptop"},
-            { name: "Monitors",     href: "/category/monitor"},
-            { name: "Printers/Ink", href: "/category/printerink"},
-            { name: "Speakers",     href: "/category/spaker"},
-            { name: "Phones",       href: "/category/phone"},
-            { name: "Cables",       href: "/category/cable"},
-            { name: "Headphones",   href: "/category/headphone"},
-            { name: "Other",        href: "/category/other"},
-
+            { name: "Browe All", href: "/" },
+            { name: "Software", href: "/category/software" },
+            { name: "Strorage/USB", href: "/category/storage" },
+            { name: "Laptops", href: "/category/laptop" },
+            { name: "Monitors", href: "/category/monitor" },
+            { name: "Printers/Ink", href: "/category/printerink" },
+            { name: "Speakers", href: "/category/spaker" },
+            { name: "Phones", href: "/category/phone" },
+            { name: "Cables", href: "/category/cable" },
+            { name: "Headphones", href: "/category/headphone" },
+            { name: "Other", href: "/category/other" },
           ],
-        }
-        
+        },
       ],
-    }
+    },
   ],
-  pages: [
-    { name: 'Contact & Info', href: '#' },
-  ],
-}
+  pages: [{ name: "Contact & Info", href: "#" }],
+};
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const NavBar = () => {
-
-  const [open, setOpen] = useState(false)
-
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="bg-white">
@@ -99,8 +98,10 @@ const NavBar = () => {
                           key={category.name}
                           className={({ selected }) =>
                             classNames(
-                              selected ? 'text-gray-600 border-gray-600' : 'text-gray-900 border-transparent',
-                              'flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium'
+                              selected
+                                ? "text-gray-600 border-gray-600"
+                                : "text-gray-900 border-transparent",
+                              "flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium"
                             )
                           }
                         >
@@ -111,15 +112,31 @@ const NavBar = () => {
                   </div>
                   <Tab.Panels as={Fragment}>
                     {navigation.categories.map((category) => (
-                      <Tab.Panel key={category.name} className="pt-10 pb-8 px-4 space-y-10">
+                      <Tab.Panel
+                        key={category.name}
+                        className="pt-10 pb-8 px-4 space-y-10"
+                      >
                         <div className="grid grid-cols-2 gap-x-4">
                           {category.featured.map((item) => (
-                            <div key={item.name} className="group relative text-sm">
+                            <div
+                              key={item.name}
+                              className="group relative text-sm"
+                            >
                               <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                <img src={item.imageSrc} alt={item.imageAlt} className="object-center object-cover" />
+                                <img
+                                  src={item.imageSrc}
+                                  alt={item.imageAlt}
+                                  className="object-center object-cover"
+                                />
                               </div>
-                              <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                                <span className="absolute z-10 inset-0" aria-hidden="true" />
+                              <a
+                                href={item.href}
+                                className="mt-6 block font-medium text-gray-900"
+                              >
+                                <span
+                                  className="absolute z-10 inset-0"
+                                  aria-hidden="true"
+                                />
                                 {item.name}
                               </a>
                               <p aria-hidden="true" className="mt-1">
@@ -137,7 +154,10 @@ const NavBar = () => {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a href={item.href} className="-m-2 p-2 block text-gray-500">
+                                  <a
+                                    href={item.href}
+                                    className="-m-2 p-2 block text-gray-500"
+                                  >
                                     {item.name}
                                   </a>
                                 </li>
@@ -153,7 +173,10 @@ const NavBar = () => {
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a href={page.href} className="-m-2 p-2 block font-medium text-gray-900">
+                      <a
+                        href={page.href}
+                        className="-m-2 p-2 block font-medium text-gray-900"
+                      >
                         {page.name}
                       </a>
                     </div>
@@ -170,7 +193,10 @@ const NavBar = () => {
           USD depends on the black market exchange rate
         </p>
 
-        <nav aria-label="Top" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav
+          aria-label="Top"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <div className="border-b border-gray-200">
             <div className="h-16 flex items-center">
               <button
@@ -183,14 +209,9 @@ const NavBar = () => {
               </button>
 
               {/* Logo */}
-              <div className="ml-4 flex lg:ml-0">
-                <a href="#">
-                  <span className="sr-only">Workflow</span>
-                  <div className="relative text-start left-5 top-8 ">
-                    <h6 className="text-xs ">& electronics</h6>
-                  </div>
-                  <h1 className='text-xl text-right text-blue-900 relative bottom-2.5'>Chekka Computers</h1>
-                  
+              <div className="ml-4 flex lg:ml-0 w-24 h-12 sm:h-12 sm:w-20">
+                <a href="/">
+                  <img src="https://cloudflare-ipfs.com/ipfs/QmdQqsMZodnzrgk65DK8M7xMgZX4Kn4H7eRN6VNYRjHeva?__cf_chl_tk=9IYK_wc0wsXNc.XPI6lERso6mLz.tP..LqQocolOHfU-1664134305-0-gaNycGzNBz0" />
                 </a>
               </div>
 
@@ -205,9 +226,9 @@ const NavBar = () => {
                             <Popover.Button
                               className={classNames(
                                 open
-                                  ? 'border-gray-600 text-gray-600'
-                                  : 'border-transparent text-gray-700 hover:text-gray-800',
-                                'relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px'
+                                  ? "border-gray-600 text-gray-600"
+                                  : "border-transparent text-gray-700 hover:text-gray-800",
+                                "relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px"
                               )}
                             >
                               {category.name}
@@ -225,7 +246,10 @@ const NavBar = () => {
                           >
                             <Popover.Panel className="absolute top-full inset-x-0 text-sm text-gray-500">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                              <div className="absolute inset-0 top-1/2 bg-white " aria-hidden="true" />
+                              <div
+                                className="absolute inset-0 top-1/2 bg-white "
+                                aria-hidden="true"
+                              />
 
                               <div className="relative bg-white">
                                 <div className="max-w-7xl mx-auto px-9">
@@ -239,8 +263,14 @@ const NavBar = () => {
                                             className="mt-1 space-y-6 sm:mt-4 sm:space-y-4 inline-flex items-end space-x-8"
                                           >
                                             {section.items.map((item) => (
-                                              <li key={item.name} className="tems-center flex">
-                                                <a href={item.href} className="hover:text-gray-800 ">
+                                              <li
+                                                key={item.name}
+                                                className="tems-center flex"
+                                              >
+                                                <a
+                                                  href={item.href}
+                                                  className="hover:text-gray-800 "
+                                                >
                                                   {item.name}
                                                 </a>
                                               </li>
@@ -272,36 +302,31 @@ const NavBar = () => {
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
-                
-
-
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+                {/* <div className="ml-4 flow-root lg:ml-6">
                   <a href="#" className="group -m-2 p-2 flex items-center">
-                    <button type="button" className="cart-icon" >
+                    <button type="button" className="cart-icon">
                       <AiOutlineShopping />
-                      <span className='cart-item-qty'> 0</span>
+                      <span className="cart-item-qty"> 0</span>
                     </button>
-                    
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </nav>
       </header>
     </div>
-  )
-}
+  );
+};
 
 export const getServerSideProps = async () => {
-    const bannerQuery = '*[_type == "banner"]'
-    const bannerData = await client.fetch(bannerQuery);
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery);
 
-    return {
-        props: {bannerData}
-  }
+  return {
+    props: { bannerData },
+  };
+};
 
-}
-
-export default NavBar
+export default NavBar;

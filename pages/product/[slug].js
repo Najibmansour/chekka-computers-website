@@ -1,60 +1,65 @@
-import React from 'react'
-import {client, urlFor} from '../../lib/client'
-import Link from 'next/link';
+import React, { useState } from "react";
+import { client, urlFor } from "../../lib/client";
+import Link from "next/link";
+import ProductMoving from "../../components/ProductMoving";
 
-import { AiOutlinePlus, AiOutlineStar, AiFillStar, AiOutlineMinus } from 'react-icons/ai'
-const ProductDetails = ({product, products}) => {
+import {
+  AiOutlinePlus,
+  AiOutlineStar,
+  AiFillStar,
+  AiOutlineMinus,
+} from "react-icons/ai";
+const ProductDetails = ({ product, products }) => {
+  const { image, name, details, price } = product;
 
-  const {image, name, details, price} = product
-
+  const [index, setIndex] = useState(0);
 
   return (
     <div>
-       <div className='product-detail-container'>
+      <div className="lg:flex md:flex gap-10 m-10 mt-16 text-gray-600 ">
         <div>
-          <div className="image-container">
-            <img
-            className='w-200 h-200'
-            src={urlFor(image && image[0])}
-            >
-            </img>
+          <div className="rounded-2xl bg-gray-100 lg:w-400 lg:h-400 cursor-pointer ">
+            <img src={urlFor(image && image[index])} className="w-79"></img>
           </div>
-          {/* <div className='small-images-container '>
-            {image?.map((item,i) => (
-              <img src={urlFor(item)}
-              className='image'
-              onMouseEnter=''
-              >
-              </img>
+          <div className="small-images-container ">
+            {image?.map((item, i) => (
+              <img
+                src={urlFor(item)}
+                className={
+                  i === index
+                    ? "rounded-lg w-17 h-17 cursor-pointer bg-red-600"
+                    : "rounded-lg bg-gray-100 w-17 h-17 cursor-pointer"
+                }
+                onMouseEnter={() => setIndex(i)}
+              ></img>
             ))}
-          </div> */}
+          </div>
         </div>
-        <div className='product-details-desc'>
-          <h1 className='text-5xl text-gray-800 '>{name}</h1>
-          <h4 className="text-xl">{`\$${price}`}</h4>
-          <p>{details}</p>
-          <Link href={`https://api.whatsapp.com/send?phone=81565789&text=*12323*%20*123132*%20*1313*`}> 
-            <div className='flex'>
-              <div className='p-6 '>
-                <button className="bg-red-500 px-5 py-1 bg-opacity-30 hover:-translate-1xl hover:scale-110">
-                  <p className=" text-xl text-red-700 ">
-                    Add to Cart
-                  </p>
-                </button>
-            </div>
-            </div>
-            
-          </Link>
-
-          {/* {Adress%3A%20akjfo%20ajhxk%20ajbsksh%0D%0AName%3A%20Najib%20Mansour%0D%0AItem%20Ids%3A%20%7B1625%7D%20%7B19286e%7D%20%7B28386r%7D} */}
-          
+        <div className="product-details-desc">
+          <h1 className="text-5xl text-gray-900 mb-5 mt-7 lg:mt-0">{name}</h1>
+          <p className="font-bold text-2xl pt-2">Details:</p>
+          <p className="pt-1">{details}</p>
+          <div className="sm:flex sm:justify-end sm:pr-12">
+            <h4 className="text-3xl mt-5  text-red-800">{`\$${price}`}</h4>
+          </div>
         </div>
-        
       </div>
-      
+
+      <div className="text-center  text-gray-700 text-3xl ">
+        <h2 className="text-center m-9 mt-4 text-gray-700 text-3xl">
+          You may also like
+        </h2>
+        <div className="relative h-40 lg:h-400 w-1/1 overflow-x-hidden">
+          <div className="maylike-products-container track">
+            {products.map((item) => (
+              <ProductMoving key={item._id} product={item} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export const getStaticPaths = async () => {
   const productsQuery = `*[_type == "product"]{
@@ -64,34 +69,30 @@ export const getStaticPaths = async () => {
   }`;
 
   const products = await client.fetch(productsQuery);
-  const paths = products.map(product => ({
+  const paths = products.map((product) => ({
     params: {
-      slug: product.slug.current
-    }
-  }))
+      slug: product.slug.current,
+    },
+  }));
 
   return {
     paths,
-    fallback: 'blocking'
-  }
-}
+    fallback: "blocking",
+  };
+};
 
-export const getStaticProps = async ({params: {slug}}) => {
-
-  const query = `*[_type == "product" && slug.current == "${slug}"][0]`
-  const productsQuery = `*[_type == "product"]`
+export const getStaticProps = async ({ params: { slug } }) => {
+  const query = `*[_type == "product" && slug.current == "${slug}"][0]`;
+  const productsQuery = `*[_type == "product" ]`;
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
 
-  console.log(product)
+  console.log(product);
 
   return {
-    props: {products, product}
-  }
-}
+    props: { products, product },
+  };
+};
 
-
-
-
-export default ProductDetails
+export default ProductDetails;
