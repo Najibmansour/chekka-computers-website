@@ -2,8 +2,6 @@ import React from "react";
 
 import { client, urlFor } from "../lib/client";
 
-import { AiOutlineShopping } from "react-icons/ai";
-import Product from "./product";
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
@@ -24,7 +22,7 @@ const navigation = {
           id: "IT & Electronics",
           name: "IT & Electronics",
           items: [
-            { name: "Browe All", href: "/" },
+            { name: "Home", href: "/" },
             { name: "Software", href: "/category/software" },
             { name: "Strorage/USB", href: "/category/storage" },
             { name: "Laptops", href: "/category/laptop" },
@@ -40,7 +38,11 @@ const navigation = {
       ],
     },
   ],
-  pages: [{ name: "Contact & Info", href: "#" }],
+  pages: [
+    { name: "Contact & Info", href: "/contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Repair Services", href: "/repair" },
+  ],
 };
 
 function classNames(...classes) {
@@ -51,7 +53,7 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white inherit">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>

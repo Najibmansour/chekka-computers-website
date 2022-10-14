@@ -33,7 +33,7 @@
   color: #324d67;
   text-align: center;
   margin-top: 10px;
-  padding: 30px 10px;
+  padding: 30px 100px;
   font-weight: 700;
   display: flex;
   flex-direction: column;
@@ -229,6 +229,18 @@
     flex-wrap: wrap;
   }
 
+  .footer-container {
+    color: #324d67;
+    text-align: center;
+    margin-top: 30px;
+    padding: 30px 10px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
   .product-detail-container .product-detail-image {
     width: 350px;
     height: 350px;
