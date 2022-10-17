@@ -11,6 +11,10 @@ module.exports = {
         "1/1": "100%",
         17: "70px",
         79: "310",
+        toendW: "10vw",
+        toendH: "10vh",
+        toendW2: "50vw",
+        toendH2: "50vh",
       },
       colors: {
         baseRed: "#f02d34",

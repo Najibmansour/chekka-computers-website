@@ -27,17 +27,17 @@ const Home = ({ products }) => {
   return (
     <div>
       <main>
-        <div className="z-0 max-w-2xl mx-auto py-16 px-4 sm:py-103 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className=" max-w-2xl mx-auto  lg:py-16 px-4 sm:py-103 sm:px-6 lg:max-w-7xl lg:px-8">
+          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-10">
             {prods?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center lg:mt-2 mt-12 mb-10">
           <div className="">
             <button
-              className="px-4 py-2 border-gray-200 border-l-2  border-y-2 rounded-l-lg"
+              className="px-4 py-2 border-gray-200 border-l-2 hover:bg-gray-200 border-y-2 rounded-l-lg"
               onClick={() => {
                 page == 0 ? null : setPage(page - 1);
               }}
@@ -47,7 +47,7 @@ const Home = ({ products }) => {
 
             {[numOfPages[1]].map((product) => (
               <button
-                className="px-4 py-2 border-gray-200 border-l-2  border-y-2"
+                className="px-4 py-2 border-gray-200 border-l-2  border-y-2 hover:bg-gray-200"
                 onClick={() => setPage(product)}
               >
                 {product}
@@ -57,7 +57,7 @@ const Home = ({ products }) => {
             {page >= 5
               ? numOfPages.slice(page - 2, page).map((product) => (
                   <button
-                    className="px-4 py-2 border-gray-200 border-l-2  border-y-2"
+                    className="px-4 py-2 border-gray-200 border-l-2  border-y-2 hover:bg-gray-200"
                     onClick={() => setPage(product)}
                   >
                     {product}
@@ -65,14 +65,14 @@ const Home = ({ products }) => {
                 ))
               : numOfPages.slice(2, 4).map((product) => (
                   <button
-                    className="px-4 py-2 border-gray-200 border-l-2  border-y-2"
+                    className="px-4 py-2 border-gray-200 border-l-2  border-y-2 hover:bg-gray-200"
                     onClick={() => setPage(product)}
                   >
                     {product}
                   </button>
                 ))}
 
-            <button className="px-4 py-2 border-gray-200 border-l-2  border-y-2">
+            <button className="px-4 py-2 border-gray-200 border-l-2  border-y-2 hover:bg-gray-200">
               ...
             </button>
 
@@ -80,15 +80,15 @@ const Home = ({ products }) => {
               .slice(numOfPages.length - 2, numOfPages.length)
               .map((product) => (
                 <button
-                  className="px-4 py-2 border-gray-200 border-l-2  border-y-2"
+                  className="px-4 py-2 border-gray-200 border-l-2  border-y-2 hover:bg-gray-200"
                   onClick={() => setPage(product)}
                 >
-                  {product}
+                  {product + 1}
                 </button>
               ))}
 
             <button
-              className="px-4 py-2 border-gray-200 border-l-2  border-y-2 border-r-2  rounded-r-lg"
+              className="px-4 py-2 border-gray-200 border-l-2  border-y-2 border-r-2  rounded-r-lg hover:bg-gray-200"
               onClick={() => {
                 page == numOfPages.length - 1 ? null : setPage(page + 1);
               }}

@@ -40,7 +40,6 @@ const navigation = {
   ],
   pages: [
     { name: "Contact & Info", href: "/contact" },
-    { name: "About Us", href: "/about" },
     { name: "Repair Services", href: "/repair" },
   ],
 };
