@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 import { client, urlFor } from "../lib/client";
 import Head from "next/head";
+import { list } from "postcss";
 
 const Repair = ({ products }) => {
   const ids = products.length;
   const IDS = products.map((product) => product.docid);
-  // const statuses =
-
+  const statuses = products.map((product) => product.status);
   const [searchTerm, setsearchTerm] = useState("");
 
   return (
@@ -25,17 +25,17 @@ const Repair = ({ products }) => {
         </div>
 
         <div className="grid ls:m-9 m-6 text-md lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-4">
-          {IDS.filter((val) => {
+          {IDS.filter((val, id) => {
             if (searchTerm == "") {
-              return val;
+              return [val, id];
             } else if (val.includes(searchTerm)) {
-              return val;
+              return [val, id];
             }
           }).map((ID, key) => (
             <div className="lg:p-8 px-3 py-2 border-2 m-36` border-gray-200 rounded-lg inline-flex justify-between max-w-sm">
               <p>{ID}</p>
               <div>
-                {products[key].status == true ? (
+                {statuses[IDS.indexOf(ID)] == true ? (
                   <p className="text-green-700 font-bold">Done</p>
                 ) : (
                   <p className="text-red-700 font-bold">Not done</p>
@@ -43,26 +43,6 @@ const Repair = ({ products }) => {
               </div>
             </div>
           ))}
-          <div className="lg:p-8 px-3 py-2 border-2 m-36` border-gray-200 rounded-lg inline-flex justify-between max-w-sm">
-            <p>999999</p>
-            <div>
-              <p className="text-red-700 font-bold">Not done</p>
-            </div>
-          </div>
-
-          <div className="lg:p-8 px-3 py-2 border-2 m-36` border-gray-200 rounded-lg inline-flex justify-between max-w-sm">
-            <p>999999</p>
-            <div>
-              <p className="text-red-700 font-bold">Not done</p>
-            </div>
-          </div>
-
-          <div className="lg:p-8 px-3 py-2 border-2 m-36` border-gray-200 rounded-lg inline-flex justify-between max-w-sm">
-            <p>999999</p>
-            <div>
-              <p className="text-red-700 font-bold">Not done</p>
-            </div>
-          </div>
         </div>
       </main>
     </div>
